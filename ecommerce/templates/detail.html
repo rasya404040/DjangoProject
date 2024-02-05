@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="container-fluid mt-5">
+        <div class="row">
+            <div class="col-sm-4" style="margin-left:100px;">
+                <img src="{{pd.image.url}}" height="400px;" width="100%">
+            </div>
+            <div class="col-sm-6">
+                <h3 class="fw-bold">{{pd.name}}</h3><br>
+                <p style="text-align:justify;line-height:2;">{{pd.desc}}</p><br>
+                <h5>{{pd.price}}</h5>
+                {{pd.stock}}
+                {% if user.is_superuser == True %}
+                    {% if pd.stock == 0 %}
+                        <h3>Out Of Stock</h3>
+                    <a href="{% url 'admin:index' %}" class="btn btn-warning">Add Stock</a>
+                    {% else %}
+                    <h3>Product in Stock</h3>
+                    <a href="{% url 'admin:index' %}" class="btn btn-warning">Add Stock</a>
+                    {% endif %}
+
+                {% else %}
+                    {% if pd.stock == 0 %}
+                        <h3>Out Of Stock</h3>
+                    {% else %}
+                        <a href="{% url 'cart:addtocart' pd.name %}" class="btn btn-warning">Add To Cart</a>
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

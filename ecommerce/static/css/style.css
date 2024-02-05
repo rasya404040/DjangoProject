@@ -1,0 +1,16 @@
+body
+{
+font-family: 'Slabo 27px', serif;
+background-color:#db65f0;
+}
+.footer
+{
+height:50px;
+width:100%;
+text-align:center;
+background-color:purple;
+position:fixed;
+bottom:0;
+left:0;
+color:white;
+}

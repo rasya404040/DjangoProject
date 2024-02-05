@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container-fluid">
+    <img src="{{c.image.url}}" width="100%" height="522px">
+</div>
+<div class="container-fluid mt-3" style="margin-bottom:100px;">
+    <h3 class="text-center fw-bold">
+        {{c.name}}
+    </h3>
+    <p style="text-align:justify;line-height:2;">
+        {{c.desc}}
+    </p>
+    <div class="container-fluid" style="margin-bottom:100px;">
+    <center>
+    <div class="row">
+        {% for i in p %}
+        <div class="col-sm-4">
+            <div class="card" style="width:100%;">
+              <img src="{{i.image.url}}" class="card-img-top" alt="..." height="300px" width="100%">
+              <div class="card-body">
+                <h5 class="card-title">{{i.name}}</h5>
+                  <p>{{i.price}}</p><br>
+                <a href="{% url 'shop:details' i.name %}" class="btn btn-primary">Details</a>
+              </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+        </center>
+</div>
+</div>
+{% endblock %}
